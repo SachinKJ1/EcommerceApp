@@ -1,0 +1,35 @@
+.endsection {
+  width: 100%;
+  background-color: #131a22;
+}
+.btnbacktotop {
+  color: white;
+  width: 100%;
+  height: 50px;
+  background-color: #1a2736;
+}
+.linkbacktotop {
+  text-decoration: none;
+}
+.btnbacktotop:hover {
+  background-color: #232f3e;
+}
+
+.copyright_Information {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 3rem;
+}
+.copyright_Information div {
+  text-align: center;
+  color: white;
+}
+
+.copyright_Information div a {
+  text-decoration: none;
+}
+.copyright_Information div img {
+  max-width: 300px;
+}

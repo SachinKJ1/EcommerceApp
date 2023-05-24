@@ -1,0 +1,21 @@
+<div class="Carousel_Container">
+    <div
+      class="Carousel_Sub_section"
+      *ngFor="let image of carouserlImages; let i = index"
+    >
+      <img
+        class="Carousel_Image"
+        [src]="image"
+        [ngClass]="{ image_Active: active === i }"
+        alt="carousel-Images"
+      />
+    </div>
+  
+    <button class="navigate_carousel_btn btn-left" (click)="onLeftClick()">
+      <mat-icon>keyboard_arrow_left</mat-icon>
+    </button>
+    <button class="navigate_carousel_btn btn-right" (click)="onRightClick()">
+      <mat-icon> keyboard_arrow_right </mat-icon>
+    </button>
+  </div>
+  

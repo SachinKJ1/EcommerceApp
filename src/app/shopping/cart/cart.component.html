@@ -1,0 +1,95 @@
+<div class="shopping_cart_container">
+  <div class="items_bill_section">
+    <div class="items_section">
+      <h1>Shopping Cart</h1>
+      <hr />
+      <!-- show image if cart is empty -->
+      <div class="Cart_empty" *ngIf="newUniqueItems.length === 0">
+        <div>
+          <img
+            class="Cart_img"
+            src="../../assets/images/Cart/Cart.png"
+            alt="EmptyCart"
+          />
+          <div>Your cart is empty! Add Something to the Cart.</div>
+        </div>
+      </div>
+
+
+      <div class="item_contaner" *ngFor="let item of newUniqueItems">
+        <div class="item_img_container">
+          <a routerLink="/{{ item.id }}">
+            <img [src]="item.photo" [alt]="item.name" />
+          </a>
+        </div>
+        <div class="item_description_details">
+          <div>
+            <a routerLink="/{{ item.id }}">
+              <p>
+                {{ item.description }}
+              </p>
+            </a>
+          </div>
+          <div class="item_description_secondary_details">
+            <span>In Stock</span>
+            <span>Eligible for Free Shipping</span>
+            <span>amazon Fulfilled</span>
+            <span><input type="checkbox" />This is a gift</span>
+          </div>
+          <div class="Quantity_Remove_section">
+            <span class="Quantity_box">
+              <span>Qty : </span>
+              <input type="tel" [(ngModel)]="count[item.id]" />
+
+              <button (click)="addQty(item, item.id)">+</button>
+              <button
+                [disabled]="count[item.id] === 1"
+                (click)="subQty(item, item.id)"
+              >
+                -
+              </button>
+            </span>
+            <button class="remove_item_btn" (click)="removeItem(item)">
+              Remove Item
+            </button>
+          </div>
+        </div>
+        <div class="item_price">
+          <span class="current_rate">
+            {{ item.price | currency : "₹" : "symbol-narrow" : "1.2-2" }}
+          </span>
+          <span class="original_rate"
+            >₹{{
+              +item.price + (+item.price * +item.discount) / 100
+                | number : "1.2-2"
+            }}</span
+          >
+        </div>
+      </div>
+    </div>
+    <div class="bill_section">
+      <div class="bill_section_sub">
+        <h1>BILL</h1>
+
+        <div>
+          <p>
+            Part of your order qualifies for FREE Delivery. Select this option
+            at checkout.
+          </p>
+        </div>
+        <div class="totalPrice">
+          <div>Items : {{ items }}</div>
+
+          <div>
+            Total Price :
+            {{ totalPrice | currency : "₹" : "symbol-narrow" : "1.2-2" }}
+          </div>
+        </div>
+        <div>
+          <button (click)="showMessage()">Proceed to Buy</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ 

@@ -1,0 +1,61 @@
+<nav>
+  <ul>
+    <li>
+      <div class="home_admin_link">
+        <div>
+          <a routerLink="/">
+            <img
+              class="amazonlogo"
+              src="../../../assets/images/navigation-images/amazon_logo.png"
+              alt="amazon logo"
+            />
+          </a>
+        </div>
+      </div>
+    </li>
+
+    <li style="margin-left: auto">
+      <div style="display: flex; align-items: center; justify-content: center">
+        <input
+          class="input"
+          type="text"
+          placeholder=" Search Amazon.in"
+          [(ngModel)]="searchKey"
+          (input)="onInput()"
+        />
+        <button class="searchicon"><mat-icon>search</mat-icon></button>
+      </div>
+
+      <!-- <input
+        type="image"
+        class="searchicon"
+        src="../../../assets/images/navigation-images/search_icon.png"
+        alt="search_icon"
+      /> -->
+    </li>
+    <li style="margin-left: auto">
+      <div><a class="admin_link_style" routerLink="admin">Admin</a></div>
+    </li>
+    <li>
+      <button
+        (click)="cartToggle()"
+        class="cart"
+        cdkDropList
+        [cdkDropListData]="cartItems"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <span class="cart-1"
+          ><mat-icon class="cart-1">shopping_cart</mat-icon></span
+        >
+        <span class="cart-2"
+          ><mat-icon class="cart-2">add_shopping_cart</mat-icon></span
+        >
+
+        <div class="numberofcartitems">
+          <!-- show the number of items -->
+          <h3>{{ length }}</h3>
+        </div>
+      </button>
+    </li>
+  </ul>
+</nav>

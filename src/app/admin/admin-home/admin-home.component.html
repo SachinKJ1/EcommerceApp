@@ -1,0 +1,87 @@
+<div class="add_new_product_container">
+  <button routerLink="add"><mat-icon>add</mat-icon> New Product</button>
+</div>
+
+<!-- spinner -->
+<div *ngIf="spinnerStatus">
+  <div class="spinner_style">
+    <app-spinner></app-spinner>
+  </div>
+</div>
+
+<!-- error Msg -->
+
+<div *ngIf="errorMsg">
+  <div class="error_style">
+    <div>
+      <p>{{ errorMsg }}</p>
+    </div>
+  </div>
+</div>
+
+<!--when no product found while searching  -->
+<div
+  *ngIf="(products | filter : searchKey : 'description').length == 0 && !spinnerStatus"
+>
+  <div class="search_Error">No Products matches your search results ☹️</div>
+</div>
+<div class="shopping_list">
+  <!--  -->
+
+  <div
+    class="shopping_list_item"
+    *ngFor="let product of products | filter : searchKey : 'description'"
+    cdkDrag
+  >
+    <div class="shopping_item_img_container">
+      <img
+        width="100px"
+        height="100px"
+        *cdkDragPreview
+        [src]="product.photo"
+        alt="img"
+      />
+      <a
+        ><img
+          class="shopping_item_img"
+          [src]="product.photo"
+          alt="product.name"
+      /></a>
+    </div>
+    <a class="link_style">
+      <p class="product_description">
+        {{ product.description }}
+      </p>
+    </a>
+    <div class="product_sub_details">
+      <div>
+        <span>{{ product.rating.overall }}⭐</span>
+        {{ product.rating.ratings | number : "1.0-2" }}
+      </div>
+      <div>
+        <span class="discount">{{ product.discount }}% off</span>
+        Deal of the day
+      </div>
+      <div>
+        {{
+          product.price | currency : "₹" : "symbol-narrow" : "1.2-2"
+        }}&nbsp;&nbsp;&nbsp;
+        <span class="original_rate"
+          >₹{{
+            +product.price + (+product.price * +product.discount) / 100
+              | number : "1.2-2"
+          }}</span
+        >
+      </div>
+      <div><span>Free delivery</span></div>
+      <div class="addToCart_btn_container">
+        <button [routerLink]="product.id" class="edit_btn">
+          <mat-icon>edit</mat-icon> Edit
+        </button>
+        <button class="delete_btn" (click)="deleteItem(product.id)">
+          <mat-icon>delete_forever</mat-icon> Remove
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,130 @@
+.Carousel_container {
+  margin-top: 60px;
+}
+.spinner_style {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+}
+.error_style {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  font-size: 2rem;
+  color: #cc0c39;
+}
+.search_Error {
+  text-align: center;
+  margin-top: 20px;
+  color: red;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 60vh;
+}
+.shopping_list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 2rem;
+  gap: 2rem;
+}
+.shopping_list_item {
+  background-color: white;
+}
+.shopping_item_img_container {
+  text-align: center;
+}
+.shopping_item_img {
+  max-width: 100%;
+  height: 200px;
+}
+.link_style {
+  text-decoration: none;
+  color: black;
+}
+.link_style:hover {
+  color: rgb(255, 149, 0);
+  text-decoration: underline;
+}
+.product_description {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  height: 2.5rem;
+}
+.product_sub_details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.discount {
+  background-color: #cc0c39;
+  color: white;
+  padding: 0.2rem;
+}
+.addToCart_btn_container {
+  display: flex;
+  justify-content: space-around;
+  gap: 2rem;
+  align-items: center;
+}
+.addToCart_btn_container button {
+  background-color: #fbce46;
+  color: black;
+  padding: 0.2rem 0.5rem;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 2px 4px grey;
+  width: 8rem;
+  height: 2rem;
+  font-size: 1.1rem;
+}
+.addToCart_btn_container .buy_btn{
+  background-color: #5ca85f;
+  color: white;
+}
+.addToCart_btn_container button:active {
+  box-shadow: none;
+}
+.original_rate {
+  text-decoration: line-through;
+}
+mat-icon {
+  vertical-align: middle;
+}
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+@media (max-width: 1350px) {
+  .shopping_list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 1000px) {
+  .shopping_list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 700px) {
+  .shopping_list {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .shopping_list_item {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid;
+  }
+  .search_Error {
+    font-size: 1rem;
+  }
+  .error_style {
+    font-size: 1rem;
+  }
+}

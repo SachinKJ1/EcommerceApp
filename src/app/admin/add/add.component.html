@@ -1,0 +1,387 @@
+<div class="item_show_container">
+  <div class="item_img">
+    <img
+      *ngIf="!this.addForm.get('imageUrl')?.invalid"
+      [src]="this.addForm.get('imageUrl')?.value"
+      [alt]="this.addForm.get('productName')?.value"
+    />
+    <img
+      *ngIf="this.addForm.get('imageUrl')?.invalid"
+      src="../../../assets/images/noProductImage/1.png"
+      alt="No product Image Found"
+    />
+  </div>
+
+  <div class="item_details">
+    <form [formGroup]="addForm" (ngSubmit)="addContact()">
+      <div>
+        <p class="description">Description :</p>
+        <textarea
+          name="description"
+          formControlName="description"
+          id=""
+          cols="30"
+          rows="5"
+        ></textarea>
+      </div>
+      <!-- error msg -->
+      <div
+        class="error_display"
+        *ngIf="
+          this.addForm.get('description')?.invalid &&
+          this.addForm.get('description')?.touched
+        "
+      >
+        Please Provide a Valid Description for the Product
+      </div>
+
+      <div>
+        <div class="label_style">
+          <label for="">Name of Product</label>
+        </div>
+        :
+        <input type="text" formControlName="productName" />
+      </div>
+
+      <!-- error msg -->
+      <div
+        class="error_display"
+        *ngIf="
+          this.addForm.get('productName')?.invalid &&
+          this.addForm.get('productName')?.touched
+        "
+      >
+        Please Provide a Product Name
+      </div>
+
+      <div>
+        <div class="label_style">
+          <label for="">Company Name</label>
+        </div>
+        :
+        <input type="text" formControlName="companyName" />
+      </div>
+
+      <!-- error msg -->
+      <div
+        class="error_display"
+        *ngIf="
+          this.addForm.get('companyName')?.invalid &&
+          this.addForm.get('companyName')?.touched
+        "
+      >
+        Please Provide a Company Name
+      </div>
+
+      <div>
+        <div class="label_style">
+          <label for="">No. of Ratings</label>
+        </div>
+        :
+        <input type="text" formControlName="ratings" />
+      </div>
+
+      <!-- error msg -->
+      <div
+        class="error_display"
+        *ngIf="
+          this.addForm.get('ratings')?.invalid &&
+          this.addForm.get('ratings')?.touched
+        "
+      >
+        Please Provide the Number of Ratings.<span
+          *ngIf="this.addForm.get('ratings')?.errors?.['pattern']"
+          >Please enter a valid number without commas and decimals to
+          seperate.</span
+        >
+      </div>
+
+      <div>
+        <div class="label_style">
+          <label for="">Overall Rating</label>
+        </div>
+        :
+        <input type="text" formControlName="overall" />
+      </div>
+
+      <!-- error msg -->
+      <div
+        class="error_display"
+        *ngIf="
+          this.addForm.get('overall')?.invalid &&
+          this.addForm.get('overall')?.touched
+        "
+      >
+        Please Provide the Overall of Ratings.
+        <span *ngIf="this.addForm.get('overall')?.errors?.['pattern']"
+          >Please enter a number in the format : (0-5).(0-9) eg : 4.6
+        </span>
+      </div>
+
+      <div>
+        <div class="label_style">
+          <label for="">Discount</label>
+        </div>
+        :
+        <input type="text" formControlName="discount" />
+      </div>
+
+      <!-- error msg -->
+      <div
+        class="error_display"
+        *ngIf="
+          this.addForm.get('discount')?.invalid &&
+          this.addForm.get('discount')?.touched
+        "
+      >
+        Please Provide the Discounted Rate.<span
+          *ngIf="this.addForm.get('discount')?.errors?.['pattern']"
+          >Please enter a valid number without commas and decimals to
+          seperate.</span
+        >
+      </div>
+
+      <div>
+        <div class="label_style">
+          <label for="">Current Price</label>
+        </div>
+        :
+        <input type="text" formControlName="price" />
+      </div>
+
+      <!-- error msg -->
+      <div
+        class="error_display"
+        *ngIf="
+          this.addForm.get('price')?.invalid &&
+          this.addForm.get('price')?.touched
+        "
+      >
+        Please provide the current price in numbers.
+        <span *ngIf="this.addForm.get('price')?.errors?.['pattern']"
+          >Please enter a valid number without commas and decimals to
+          seperate.</span
+        >
+      </div>
+
+      <div>
+        <div class="label_style">
+          <label for="">Image Url for Product</label>
+        </div>
+        :
+
+        <textarea
+          type="text"
+          formControlName="imageUrl"
+          style="margin-top: 0.5rem"
+        ></textarea>
+      </div>
+
+      <!-- error msg -->
+      <div
+        class="error_display"
+        *ngIf="
+          this.addForm.get('imageUrl')?.invalid &&
+          this.addForm.get('imageUrl')?.touched
+        "
+      >
+        Please Provide a valid Image Url and check if the image is displayed in
+        the left side
+      </div>
+
+      <!-- ///////////////////////////////////////////              Offers             /////////////////////////////////////////// -->
+      <div class="Offers_container">
+        <h4>Offers</h4>
+        <div formArrayName="offers">
+          <div
+            *ngFor="let group of offerControls; let i = index"
+            [formGroupName]="i"
+          >
+            <div class="offers_section">
+              <div class="offerDescription">
+                <div class="label_style">
+                  <label for="offerName">Name of the offer</label>
+                </div>
+                :
+
+                <input
+                  style="display: block"
+                  type="text"
+                  name="offerName"
+                  formControlName="name"
+                />
+                <button
+                  class="minus_btn"
+                  type="button"
+                  (click)="onRemoveOffers(i)"
+                >
+                  <mat-icon>remove</mat-icon>
+                </button>
+              </div>
+
+              <!-- error msg -->
+              <div
+                class="error_display"
+                *ngIf="
+                  this.addForm.get('offers')?.get(i.toString())?.get('name')
+                    ?.invalid &&
+                  this.addForm.get('offers')?.get(i.toString())?.get('name')
+                    ?.touched
+                "
+              >
+                Offer Name Invalid
+              </div>
+
+              <div class="offerDescription">
+                <div class="label_style">
+                  <label for="offerDescription">Description</label>
+                </div>
+                :
+                <div style="width: 30rem">
+                  <textarea
+                    type="text"
+                    name="offerDescription"
+                    formControlName="description"
+                  ></textarea>
+                </div>
+              </div>
+
+              <!-- error msg -->
+              <div
+                class="error_display"
+                *ngIf="
+                  this.addForm
+                    .get('offers')
+                    ?.get(i.toString())
+                    ?.get('description')?.invalid &&
+                  this.addForm
+                    .get('offers')
+                    ?.get(i.toString())
+                    ?.get('description')?.touched
+                "
+              >
+                Offer Description Invalid
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <button class="add_btn" type="button" (click)="onAddOffers()">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <!-- ///////////////////////////////////////////            Specifications             /////////////////////////////////////////// -->
+
+      <div class="product_specs">
+        <h4>Specifications</h4>
+
+        <div formArrayName="specs">
+          <div
+            class="specs_iterator"
+            *ngFor="let group of specControls; let i = index"
+            [formGroupName]="i"
+          >
+            <input type="text" formControlName="spec" /> :
+            <input type="text" formControlName="value" />&nbsp;
+            <button class="minus_btn" type="button" (click)="onRemoveSpecs(i)">
+              <mat-icon>remove</mat-icon>
+            </button>
+            <!-- error msg -->
+
+            <span
+              class="error_display"
+               
+              *ngIf="
+                this.addForm.get('specs')?.get(i.toString())?.get('spec')
+                  ?.invalid &&
+                this.addForm.get('specs')?.get(i.toString())?.get('spec')
+                  ?.touched
+              "
+            >
+              Specification Name Invalid
+            </span>
+            
+
+            <span
+              class="error_display"
+              *ngIf="
+                this.addForm.get('specs')?.get(i.toString())?.get('value')
+                  ?.invalid &&
+                this.addForm.get('specs')?.get(i.toString())?.get('value')
+                  ?.touched
+              "
+            >
+              Specification Description Invalid
+            </span>
+          </div>
+        </div>
+        <div>
+          <button class="add_btn" type="button" (click)="onAddSpecs()">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+      </div>
+      <!-- ///////////////////////////////////////////            About             /////////////////////////////////////////// -->
+
+      <div class="about_item">
+        <h4>About this item</h4>
+        <ul class="about_item_list">
+          <div formArrayName="about">
+            <div
+              class="about_iterator"
+              *ngFor="let group of aboutControls; let i = index"
+            >
+              <textarea
+                type="text"
+                [formControlName]="i"
+                cols="30"
+                rows="5"
+              ></textarea>
+              <button
+                class="minus_btn"
+                type="button"
+                (click)="onRemoveAbout(i)"
+              >
+                <mat-icon>remove</mat-icon>
+              </button>
+
+              <!-- error msg -->
+              <div
+                class="error_display"
+                *ngIf="
+                  this.addForm.get('about')?.get(i.toString())?.invalid &&
+                  this.addForm.get('about')?.get(i.toString())?.touched
+                "
+              >
+                You cannot leave this field empty
+              </div>
+            </div>
+          </div>
+          <div>
+            <button
+              style="margin-bottom: 2rem"
+              class="add_btn"
+              type="button"
+              (click)="onAddAbout()"
+            >
+              <mat-icon>add</mat-icon>
+            </button>
+            <hr />
+
+            <button
+              class="submit_btn"
+              [ngClass]="{
+                submit_btn_disabled: this.addForm.invalid || !this.addForm.dirty
+              }"
+              type="submit"
+            >
+              UPDATE
+            </button>
+          </div>
+        </ul>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,125 @@
+.Cart_Container {
+  border-radius: 10px;
+  padding: 1rem;
+  background-color: white;
+  width: 500px;
+  height: 10rem;
+}
+.Cart_Container h1 {
+  font-size: 2rem;
+}
+.Cart_img {
+  max-width: 100%;
+  height: 200px;
+}
+.Cart_items,
+.Cart_empty {
+  height: 25rem;
+  padding: 2rem 1rem;
+  overflow: auto;
+}
+.cart_item_solo {
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  border-bottom: 1px solid;
+}
+.Cart_empty div:first-child {
+  text-align: center;
+}
+.Cart_empty div:last-child {
+  font-size: 1.2rem;
+}
+.link_style {
+  text-decoration: none;
+  color: black;
+}
+.product_description {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.current_rate {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.original_rate {
+  text-decoration: line-through;
+}
+.toCartLinkSection {
+  text-align: center;
+  padding: 1rem;
+}
+.goToCartLink {
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  background-color: #fbce46;
+  text-decoration: none;
+  color: black;
+  box-shadow: 0 2px 4px grey;
+  font-size: 1.2rem;
+  border: none;
+}
+mat-icon {
+  vertical-align: middle;
+}
+.rate_quantiy_section {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.Quantity_box {
+  border: 0.5px solid;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 3px;
+  padding-left: 0.5rem;
+}
+
+.Quantity_Remove_section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+.Quantity_box input {
+  width: 30px;
+  outline: none;
+  border: none;
+}
+.Quantity_box button {
+  width: 1rem;
+  font-size: 1.1rem;
+}
+
+.remove_item_btn {
+  background-color: #f94d4d;
+  color: white;
+  font-weight: 700;
+  padding: 0.5rem;
+  border: none;
+  box-shadow: 0 1px 2px grey;
+  border-radius: 5px;
+}
+.remove_item_btn :hover {
+  box-shadow: none;
+}
+
+@media (max-width: 650px) {
+  .Cart_Container {
+    width: 400px;
+  }
+}
+@media (max-width: 500px) {
+  .Cart_Container {
+    width: 350px;
+  }
+}
+@media (max-width: 400px) {
+  .Cart_Container {
+    width: 320px;
+  }
+}
